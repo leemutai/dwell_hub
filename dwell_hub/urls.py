@@ -21,10 +21,10 @@ from main_app import views
 
 urlpatterns = [
     path('', views.home, name="home"),
-    path('properties', views.properties, name="Properties"),
-    path('services', views.services, name="Services"),
-    path('about', views.about, name="About"),
-    path('contact', views.contact, name="Contact Us"),
+    path('properties', views.properties, name="properties"),
+    path('property_details', views.property_details, name="property_details"),
+    path('about', views.about, name="about"),
+    path('contact', views.contact, name="contact"),
 
     path('admin/', admin.site.urls),
 ]

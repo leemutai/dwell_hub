@@ -1,5 +1,6 @@
 from django.shortcuts import render
 
+
 # Create your views here.
 
 def home(request):
@@ -7,17 +8,16 @@ def home(request):
 
 
 def properties(request):
-    return None
+    return render(request, 'properties.html')
 
 
-def services(request):
-    return None
+def property_details(request):
+    return render(request, 'property-details.html')
 
 
 def about(request):
-    return None
+    return render(request, 'about.html')
 
 
 def contact(request):
-    return None
-
+    return render(request, 'contact.html')
