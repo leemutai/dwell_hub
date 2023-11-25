@@ -7,9 +7,11 @@ class User(models.Model):
     email = models.EmailField(unique=True)
     password = models.CharField(max_length=100)
     user_type = models.CharField(max_length=50)
-    profile_picture = models.ImageField(upload_to='', blank=True, null=True)
+    profile_picture = models.ImageField(upload_to="media/users", blank=True, null=True)
     phone = models.CharField(max_length=100)
     reg_date = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.username
@@ -24,6 +26,7 @@ class Property(models.Model):
     bedrooms = models.IntegerField()
     bathrooms = models.IntegerField()
     availability = models.BooleanField(default=True)
+    property_pic = models.ImageField(upload_to="media/property", blank=True, null=True)
 
     def __str__(self):
         return self.title
