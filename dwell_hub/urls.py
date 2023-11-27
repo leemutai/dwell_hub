@@ -24,8 +24,12 @@ from main_app import views
 urlpatterns = [
     path('', views.home, name="home"),
     path('user', views.all_users, name="all"),
+    path('signin', views.signin, name="signin"),
+    path('signout', views.signout, name="signout"),
     path('search', views.search_users, name="search"),
     path('user/<int:user_id>', views.user_details, name="details"),
+    path('user/delete/<int:user_id>', views.user_delete, name="delete"),
+    path('user/update/<int:user_id>', views.user_update, name="update"),
     path('user', views.user, name="user"),
 
 

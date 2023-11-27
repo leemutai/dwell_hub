@@ -10,9 +10,13 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-sm-5">
+
+        {% include 'alerts.html' %}
+
+
             <div class="card">
                 {% if user.profile_picture %}
-                    <img src="{{ user.profile_picture.url }}" height="300" width="300" alt="" class="card-img-top">
+                    <img src="{{ user.profile_picture.url }}" height="300" width="300" alt="" >
                 {% endif %}
 
                 <div class="card-body">
@@ -23,6 +27,16 @@
                     <p class="card-text">Registered on: {{ user.reg_date }}</p>
                     <p class="card-text">Added On: {{ user.created_at | naturaltime }}</p>
                     <p class="card-text">Updated at: {{ user.updated_at | naturaltime }}</p>
+                    {% if perms.main_app.delete_user %}
+                    	<a href="{% url 'delete' user.id %}" class="btn btn-danger w-100">Delete</a>
+                    {% endif %}
+
+                    <a href="{% url 'delete' user.id %}" class="btn btn-danger w-100">Delete</a>
+
+                    {% if perms.main_app.change_user %}
+                        <a href="{% url 'update' user.id %}" class="btn btn-info w-100 mt-3">Update</a>
+                    {% endif %}
+                    <a href="{% url 'update' user.id %}" class="btn btn-info w-100 mt-3">Update</a>
                 </div>
             </div>
         </div>
