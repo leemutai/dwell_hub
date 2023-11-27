@@ -24,6 +24,7 @@ from main_app import views
 urlpatterns = [
     path('', views.home, name="home"),
     path('user', views.all_users, name="all"),
+    path('search', views.search_users, name="search"),
     path('user/<int:user_id>', views.user_details, name="details"),
     path('user', views.user, name="user"),
 

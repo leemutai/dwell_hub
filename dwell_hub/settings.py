@@ -24,7 +24,7 @@ SECRET_KEY = 'django-insecure-+mc!v+%uoan!0yb24est94kdj_rt7b&+0$mhbw4%8)!1*prz7m
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 # Application definition
 
@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'main_app.apps.MainAppConfig',
     "crispy_forms",
     "crispy_bootstrap5",
+    "django.contrib.humanize",
 
 ]
 

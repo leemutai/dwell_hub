@@ -1,4 +1,15 @@
+import os.path
+import uuid
+
 from django.db import models
+
+
+def unique_img_name(instance, filename):
+    name = uuid.uuid4()
+    print(name)
+    ext = filename.split(".")[-1]
+    full_name = f"{name}.{ext}"  # dtmf.png
+    return os.path.join('users', 'property', full_name)
 
 
 # Create your models here.
@@ -26,7 +37,7 @@ class Property(models.Model):
     bedrooms = models.IntegerField()
     bathrooms = models.IntegerField()
     availability = models.BooleanField(default=True)
-    property_pic = models.ImageField(upload_to="media/property", blank=True, null=True)
+    property_pic = models.ImageField(upload_to="media\property", blank=True, null=True)
 
     def __str__(self):
         return self.title
@@ -40,7 +51,7 @@ class Review(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.user
+        return self.user.username
 
 
 class Message(models.Model):
@@ -50,7 +61,7 @@ class Message(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.sender
+        return self.sender.username
 
 
 class Appointment(models.Model):
@@ -61,7 +72,7 @@ class Appointment(models.Model):
     status = models.CharField(max_length=20)
 
     def __str__(self):
-        return self.user
+        return self.user.username
 
 
 class Payment(models.Model):
@@ -73,4 +84,4 @@ class Payment(models.Model):
     status = models.CharField(max_length=20)  # e.g., 'pending', 'completed', 'refunded'
 
     def __str__(self):
-        return self.user
+        return self.user.username
