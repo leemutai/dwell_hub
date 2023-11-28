@@ -31,12 +31,12 @@
                     	<a href="{% url 'delete' user.id %}" class="btn btn-danger w-100">Delete</a>
                     {% endif %}
 
-                    <a href="{% url 'delete' user.id %}" class="btn btn-danger w-100">Delete</a>
+                    
 
                     {% if perms.main_app.change_user %}
                         <a href="{% url 'update' user.id %}" class="btn btn-info w-100 mt-3">Update</a>
                     {% endif %}
-                    <a href="{% url 'update' user.id %}" class="btn btn-info w-100 mt-3">Update</a>
+
                 </div>
             </div>
         </div>

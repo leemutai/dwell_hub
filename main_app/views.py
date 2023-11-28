@@ -1,6 +1,6 @@
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
 from django.core.paginator import Paginator
 from django.db.models import Q
 from django.shortcuts import render, redirect, get_object_or_404
@@ -114,13 +114,14 @@ def user_details(request, user_id):
 
 
 @login_required
+# @permission_required('main_app.delete_user')
 def user_delete(request, user_id):
     user = get_object_or_404(User, pk=user_id)
     user.delete()
     messages.warning(request, "The user was deleted permanently")
     return redirect("all")
 
-
+# @permission_required('main_app.view_user')
 def search_users(request):
     search_word = request.GET.get("search_word")
     user = User.objects.filter(
@@ -131,7 +132,7 @@ def search_users(request):
     data = paginator.get_page(page_number)
     return render(request, 'all_users.html', {"user": data})
 
-
+# @permission_required('main_app.update_user')
 @login_required
 def user_update(request, user_id):
     user = get_object_or_404(User, pk=user_id)  # SELECT * FROM user WHERE id=1
